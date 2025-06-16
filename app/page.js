@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import "./Home.css"; // CSS riêng cho trang này
+import "./styles/Home.css"; // CSS riêng cho trang này
 
 export default function Home() {
   const [products, setProducts] = useState([]);
