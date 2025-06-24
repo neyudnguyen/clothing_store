@@ -60,3 +60,18 @@
 .detail-edit-button:hover {
   background-color: #c4385b;
 }
+
+.detail-cart-button {
+  background-color: #0070f3;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.detail-cart-button:hover {
+  background-color: #0051a3;
+}
