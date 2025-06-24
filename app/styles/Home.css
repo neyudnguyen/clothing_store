@@ -44,8 +44,8 @@
 
 .product-image {
   width: 100px;
-  height: 100px;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;
   border-radius: 10px;
   border: 1px solid #ddd;
 }
@@ -98,4 +98,59 @@
   background-color: #d94f70;
   color: white;
   border-color: #d94f70;
+}
+
+.add-to-cart-button {
+  background-color: #d94f70;          /* Hồng nhạt - rose-500 */
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 9999px;              /* Bo tròn hoàn toàn */
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(236, 72, 153, 0.25);
+  margin-top: 15px;
+}
+
+.add-to-cart-button:hover {
+  background-color: #db2777;          /* Hồng đậm hơn - rose-600 */
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(219, 39, 119, 0.3);
+}
+
+.add-to-cart-button:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 6px rgba(219, 39, 119, 0.2);
+}
+
+
+.quantity-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.quantity-label {
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+}
+
+.quantity-input {
+  width: 70px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: border-color 0.3s ease;
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: #4f46e5; /* Indigo tone */
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }

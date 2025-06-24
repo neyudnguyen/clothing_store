@@ -1,17 +1,35 @@
-import DeleteButton from "./DeleteButton"; // client component
+"use client";
+
+import { useEffect, useState } from "react";
+import DeleteButton from "./DeleteButton";
+import { useCart } from "@/context/CartContext";
 import "./ProductDetail.css";
 
-async function getProduct(id) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}`,
-    { cache: "no-store" }
-  );
-  if (!res.ok) throw new Error("Product not found");
-  return res.json();
-}
+export default function ProductDetail({ params }) {
+  const { addToCart } = useCart();
+  const [product, setProduct] = useState(null);
+  const [error, setError] = useState(null);
 
-export default async function ProductDetail({ params }) {
-  const product = await getProduct(params.id);
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${params.id}`,
+          { cache: "no-store" }
+        );
+        if (!res.ok) throw new Error("Product not found");
+        const data = await res.json();
+        setProduct(data);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+
+    fetchProduct();
+  }, [params.id]);
+
+  if (error) return <p className="error">{error}</p>;
+  if (!product) return <p>Loading...</p>;
 
   return (
     <main className="detail-container">
@@ -40,6 +58,12 @@ export default async function ProductDetail({ params }) {
           Edit
         </a>
         <DeleteButton id={params.id} />
+        <button
+          onClick={() => addToCart(product)}
+          className="detail-cart-button"
+        >
+          Add to Cart
+        </button>
       </div>
     </main>
   );
